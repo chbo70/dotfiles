@@ -1,0 +1,46 @@
+Config { font = "xft:mononoki NF:pixelsize=16:antialias=true:hinting:true"
+       , additionalFonts = ["xft: Roboto Mono Bold Nerd Font Complete: pixelsize=20:antialias=true:hinting:true"
+       			               ,"xft: JetBrainsMono-Bold:pixelsize=21"
+                           ,"xft:mononoki NF:pixelsize=40:antialias=true:hinting:true" ]
+       , bgColor = "#1a1b26"
+       , fgColor = "#f8f8f2"
+       --, alpha = 250
+       , position = Static {xpos = 16, ypos = 9, width = 2527, height = 28}
+      --, textOffset = -1
+      --, iconOffset = -1
+       , lowerOnStart = False
+       , pickBroadest = False
+       , persistent = True
+       , hideOnStart = False
+       , iconRoot = ".xmonad/xpm"--default = "."
+       , allDesktops = True
+      --, overrideRedirect = True
+       , commands = [
+       		              Run Date " %a %b %d - %R " "date" 50
+		                    ,Run Uptime ["-t", " <hours>h <minutes>m"] 60
+		                    --,Run Network "eno1" ["-t"," <rx> kb   <tx> kb"] 20
+		                    ,Run Cpu ["-t", "﬙ <total>%"] 20
+		                    ,Run Memory ["-t"," <usedratio>%"] 10
+		     		            --,Run Com "usedratio" ["--listen"] "" 40
+                        --volume status
+                        , Run Com "bash" ["/home/bonti/scripts/volumeget.sh"] "vol" 1
+                        , Run ComX "pamixer" ["--get-volume-human"] "muted" "" 1
+                        --,Run Volume "default" "Master" [] 10
+                        , Run Com "bash" ["/home/bonti/scripts/getupdate.sh"] "pacupd" 100 
+                        , Run Weather "LOWI" ["-t", "<stationState>: <tempC>°C"] 36000
+                        , Run K10Temp "0000:00:18.3" ["--template", "﨎 <Tdie>ºC"] 60
+                        , Run Com "padding" ["panel"] "trayerpad" 10
+                        , Run UnsafeStdinReader
+ 
+				                ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template ="<fn=4> %UnsafeStdinReader%</fn>}{<fn=2><fc=#2b2f40,#1a1b26:0></fc></fn><fc=#F7768E,#2b2f40:0> %pacupd% </fc>\
+                   \<fn=2><fc=#1a1b26,#2b2f40:0></fc></fn><fc=#7AA2F7,#1a1b26:0>%uptime% </fc>\
+                   \<fn=2><fc=#2b2f40,#1a1b26:0></fc></fn><fc=#39D7E5,#2b2f40:0>%LOWI% </fc>\
+                   \<fn=2><fc=#1a1b26,#2b2f40:0></fc></fn><fc=#4ABAAF,#1a1b26:0>%k10temp% </fc>\
+                   \<fn=2><fc=#2b2f40,#1a1b26:0></fc></fn><fc=#E0AF68,#2b2f40:0>%cpu% </fc>\
+                   \<fn=2><fc=#1a1b26,#2b2f40:0></fc></fn><fc=#C574DD,#1a1b26:0>%memory% </fc>\
+                   \<fn=2><fc=#2b2f40,#1a1b26:0></fc></fn><fc=#a9b1d6,#2b2f40:0><fn=4></fn> %vol% <fn=4></fn> %pamixer%</fc>\
+                   \<fn=2><fc=#1a1b26,#2b2f40:0></fc></fn><fc=#9ECE6A,#1a1b26:0>%date%</fc>"
+       		  --<fn=2><fc=#2b2f40,#1a1b26:0></fc></fn><fc=#F7768E,#2b2f40:0>%eno1% </fc>\ 
