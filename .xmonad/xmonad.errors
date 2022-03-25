@@ -1,0 +1,7 @@
+
+xmonad.hs:251:15: warning: [-Wdeprecations]
+    In the use of ‘spacing’ (imported from XMonad.Layout.Spacing):
+    Deprecated: "Use spacingRaw instead."
+    |
+251 | gapSpaced g = spacing g . myGaps g
+    |               ^^^^^^^
